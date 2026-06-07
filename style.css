@@ -1,0 +1,509 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background:  var(--color-bg);
+  color:       var(--color-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size:   1rem;
+  line-height: 1.6;
+  padding:     var(--space-xl) var(--space-md);
+  max-width:   860px;
+  margin:      0 auto;
+}
+
+/* ── Page header ── */
+
+.page-header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     flex-start;
+  margin-bottom:   var(--space-xl);
+  padding-bottom:  var(--space-lg);
+  border-bottom:   1px solid var(--color-border);
+}
+
+h1 {
+  font-size:      1.75rem;
+  font-weight:    700;
+  letter-spacing: -0.02em;
+  line-height:    1.2;
+}
+
+.page-header p {
+  color:      var(--color-muted);
+  font-size:  0.9rem;
+  margin-top: var(--space-xs);
+}
+
+#theme-toggle {
+  background:    none;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius);
+  color:         var(--color-muted);
+  cursor:        pointer;
+  font:          inherit;
+  font-size:     0.8rem;
+  padding:       0.3rem 0.7rem;
+  white-space:   nowrap;
+  flex-shrink:   0;
+  transition:    color 0.15s, border-color 0.15s;
+}
+
+#theme-toggle:hover { color: var(--color-text); border-color: var(--color-muted); }
+
+/* ── Add-album form ── */
+
+form {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-lg);
+}
+
+label {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-xs);
+  font-size:      0.85rem;
+  font-weight:    500;
+  color:          var(--color-muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+label .hint {
+  font-size:      0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight:    400;
+}
+
+input, textarea {
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius);
+  color:         var(--color-text);
+  font:          inherit;
+  font-size:     1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight:   400;
+  padding:       0.6rem var(--space-md);
+  width:         100%;
+  transition:    border-color 0.15s;
+}
+
+textarea { resize: vertical; min-height: 8rem; line-height: 1.7; }
+
+input:focus, textarea:focus {
+  outline:        2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color:   transparent;
+}
+
+input.error, textarea.error { border-color: var(--color-error); }
+input.error:focus, textarea.error:focus { outline-color: var(--color-error); }
+
+.error-msg {
+  color:          var(--color-error);
+  font-size:      0.8rem;
+  font-weight:    400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+button[type="submit"] {
+  align-self:    flex-start;
+  background:    var(--color-accent);
+  border:        none;
+  border-radius: var(--radius);
+  color:         #0a0a0a;
+  cursor:        pointer;
+  font:          inherit;
+  font-size:     0.9rem;
+  font-weight:   600;
+  letter-spacing: 0.01em;
+  padding:       0.6rem var(--space-lg);
+  transition:    opacity 0.15s, transform 0.1s;
+}
+
+button[type="submit"]:hover  { opacity: 0.88; }
+button[type="submit"]:active { transform: scale(0.98); }
+
+/* ── Collection toolbar ── */
+
+#collection-section {
+  margin-top:  var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top:  1px solid var(--color-border);
+}
+
+.collection-toolbar {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+#search { flex: 1; min-width: 0; width: auto; }
+
+.toolbar-actions { display: flex; gap: var(--space-xs); flex-shrink: 0; }
+
+#sort-toggle, #export-btn, #import-label {
+  background:    none;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius);
+  color:         var(--color-muted);
+  cursor:        pointer;
+  font:          inherit;
+  font-size:     0.8rem;
+  padding:       0.3rem 0.7rem;
+  white-space:   nowrap;
+  transition:    color 0.15s, border-color 0.15s;
+}
+
+#sort-toggle:hover, #export-btn:hover, #import-label:hover {
+  color: var(--color-text); border-color: var(--color-muted);
+}
+
+#import-input { display: none; }
+
+/* ── Album grid ── */
+
+#collection {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap:                   var(--space-md);
+}
+
+/* ── Album card (grid cell) ── */
+
+.album-card {
+  position:      relative;
+  aspect-ratio:  1;
+  border-radius: calc(var(--radius) + 2px);
+  overflow:      hidden;
+  cursor:        pointer;
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  transition:    transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  outline:       none;
+}
+
+.album-card:hover {
+  transform:    translateY(-4px) scale(1.02);
+  box-shadow:   0 16px 40px rgba(0, 0, 0, 0.25);
+  border-color: var(--color-accent);
+}
+
+.album-card:focus-visible {
+  outline:        2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.card-cover {
+  position:   absolute;
+  inset:      0;
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+}
+
+.card-cover--placeholder {
+  background:      var(--ph-bg, var(--color-border));
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       3rem;
+  font-weight:     700;
+  color:           rgba(255, 255, 255, 0.45);
+  user-select:     none;
+}
+
+.card-info {
+  position:   absolute;
+  bottom:     0;
+  left:       0;
+  right:      0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 55%, transparent 100%);
+  padding:    2.5rem var(--space-sm) var(--space-sm);
+  color:      #fff;
+}
+
+.card-title {
+  font-size:     0.82rem;
+  font-weight:   600;
+  line-height:   1.25;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.card-artist {
+  font-size:     0.72rem;
+  opacity:       0.72;
+  margin-top:    2px;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Edit form (inside card) ── */
+
+.edit-form {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-md);
+  padding:        var(--space-md);
+  height:         100%;
+  overflow-y:     auto;
+}
+
+.edit-label {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-xs);
+  font-size:      0.85rem;
+  font-weight:    500;
+  color:          var(--color-muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.edit-label .hint {
+  font-size:      0.75rem;
+  font-weight:    400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.edit-actions { display: flex; gap: var(--space-sm); }
+
+.edit-actions button[type="submit"] {
+  background: var(--color-accent); border: none; border-radius: var(--radius);
+  color: #0a0a0a; cursor: pointer; font: inherit; font-weight: 600;
+  padding: 0.45rem var(--space-md);
+}
+
+.edit-actions button[type="submit"]:hover { opacity: 0.88; }
+
+.edit-actions button[type="button"] {
+  background: none; border: 1px solid var(--color-border); border-radius: var(--radius);
+  color: var(--color-muted); cursor: pointer; font: inherit;
+  padding: 0.45rem var(--space-md); transition: color 0.15s, border-color 0.15s;
+}
+
+.edit-actions button[type="button"]:hover { color: var(--color-text); border-color: var(--color-muted); }
+
+/* ── Delete confirmation (inline, reused in modal) ── */
+
+.confirm-row, .modal-actions:has(.confirm-msg) {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  font-size:   0.85rem;
+  color:       var(--color-muted);
+}
+
+.confirm-msg { font-size: 0.85rem; }
+
+.confirm-yes, .confirm-no {
+  background: none; border: 1px solid currentColor;
+  border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.75rem; padding: 0.2rem 0.6rem;
+}
+
+.confirm-yes { color: var(--color-error); }
+.confirm-no  { color: var(--color-muted); }
+.confirm-no:hover { color: var(--color-text); }
+
+/* ── Modal overlay ── */
+
+.modal-overlay {
+  position:   fixed;
+  inset:      0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index:    10;
+}
+
+/* ── Modal dialog ── */
+
+dialog.album-modal {
+  position:      fixed;
+  top:           50%;
+  left:          50%;
+  transform:     translate(-50%, -50%);
+  width:         min(480px, 92vw);
+  max-height:    88vh;
+  overflow:      hidden;
+  border:        1px solid var(--color-border);
+  border-radius: 14px;
+  background:    var(--color-surface);
+  color:         var(--color-text);
+  padding:       0;
+  margin:        0;
+  z-index:       11;
+  transform-origin: center center;
+}
+
+/* suppress native backdrop — we use .modal-overlay */
+dialog.album-modal::backdrop { display: none; }
+
+.modal-cover {
+  display:    block;
+  width:      100%;
+  aspect-ratio: 1;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+.modal-cover--placeholder {
+  background:      var(--ph-bg, var(--color-border));
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       5rem;
+  font-weight:     700;
+  color:           rgba(255, 255, 255, 0.3);
+  user-select:     none;
+}
+
+.modal-body {
+  padding: var(--space-lg);
+}
+
+.modal-title {
+  font-size:      1.35rem;
+  font-weight:    700;
+  letter-spacing: -0.02em;
+  line-height:    1.2;
+}
+
+.modal-artist {
+  color:      var(--color-muted);
+  font-size:  0.95rem;
+  margin-top: var(--space-xs);
+}
+
+.genre-tags {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.album-genre {
+  display:       inline-block;
+  background:    color-mix(in srgb, var(--color-accent) 12%, transparent);
+  border:        1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-radius: 99px;
+  color:         var(--color-accent);
+  font-size:     0.72rem;
+  font-weight:   500;
+  letter-spacing: 0.03em;
+  padding:       0.15rem 0.6rem;
+}
+
+dialog.album-modal .song-list {
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+/* ── Track listing ── */
+
+.song-list {
+  border-top:     1px solid var(--color-border);
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+  list-style:     none;
+  margin-top:     var(--space-md);
+  padding-top:    var(--space-md);
+}
+
+.song-list li {
+  display:   flex;
+  gap:       var(--space-md);
+  font-size: 0.875rem;
+  padding:   0.25rem 0;
+  color:     var(--color-text);
+}
+
+.song-list li:hover { color: var(--color-accent); }
+
+.track-num {
+  color:       var(--color-muted);
+  min-width:   1.5rem;
+  text-align:  right;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Modal actions ── */
+
+.modal-actions {
+  display:     flex;
+  gap:         var(--space-sm);
+  margin-top:  var(--space-lg);
+  padding-top: var(--space-md);
+  border-top:  1px solid var(--color-border);
+}
+
+.modal-btn {
+  background:    none;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius);
+  color:         var(--color-text);
+  cursor:        pointer;
+  font:          inherit;
+  font-size:     0.875rem;
+  padding:       0.45rem var(--space-md);
+  transition:    border-color 0.15s, color 0.15s;
+}
+
+.modal-btn:hover { border-color: var(--color-muted); }
+
+.modal-btn--primary {
+  background:   var(--color-accent);
+  border-color: var(--color-accent);
+  color:        #0a0a0a;
+  font-weight:  600;
+}
+
+.modal-btn--primary:hover { opacity: 0.88; }
+
+.modal-btn--danger { color: var(--color-error); border-color: var(--color-error); }
+.modal-btn--danger:hover { background: color-mix(in srgb, var(--color-error) 10%, transparent); }
+
+/* Edit form inside the modal — override the card-context height/scroll rules */
+.modal-body .edit-form {
+  height:     auto;
+  overflow-y: visible;
+  padding:    0;
+}
+
+/* ── Modal close button ── */
+
+.modal-close {
+  position:    absolute;
+  top:         var(--space-sm);
+  right:       var(--space-sm);
+  background:  rgba(0, 0, 0, 0.4);
+  border:      none;
+  border-radius: 50%;
+  color:       rgba(255, 255, 255, 0.85);
+  cursor:      pointer;
+  font-size:   1.1rem;
+  line-height: 1;
+  width:       2rem;
+  height:      2rem;
+  display:     flex;
+  align-items: center;
+  justify-content: center;
+  transition:  background 0.15s;
+}
+
+.modal-close:hover { background: rgba(0, 0, 0, 0.65); }

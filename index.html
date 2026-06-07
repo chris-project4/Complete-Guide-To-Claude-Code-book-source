@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Collection</title>
+  <script>
+    const t = localStorage.getItem('music-theme');
+    if (t) document.documentElement.dataset.theme = t;
+  </script>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div>
+        <h1>Music Collection</h1>
+        <p>Your personal album library</p>
+      </div>
+      <button id="theme-toggle" type="button" aria-label="Toggle colour scheme"></button>
+    </header>
+
+    <form id="album-form" novalidate>
+      <label for="artist">
+        Artist
+        <input id="artist" name="artist" type="text" autocomplete="off">
+      </label>
+
+      <label for="title">
+        Album title
+        <input id="title" name="title" type="text" autocomplete="off">
+      </label>
+
+      <label for="genre">
+        Genre
+        <input id="genre" name="genre" type="text" autocomplete="off">
+      </label>
+
+      <label for="songs">
+        Songs
+        <span class="hint">One title per line, in track order</span>
+        <textarea id="songs" name="songs"></textarea>
+      </label>
+
+      <button type="submit">Save album</button>
+    </form>
+
+    <section id="collection-section">
+      <div class="collection-toolbar">
+        <input id="search" type="search" placeholder="Search albums…" autocomplete="off" aria-label="Search albums">
+        <div class="toolbar-actions">
+          <button id="sort-toggle" type="button">A → Z</button>
+          <button id="export-btn" type="button">Export</button>
+          <label id="import-label" for="import-input">Import</label>
+          <input id="import-input" type="file" accept=".json" aria-label="Import collection">
+        </div>
+      </div>
+      <div id="collection" aria-label="Saved albums"></div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
