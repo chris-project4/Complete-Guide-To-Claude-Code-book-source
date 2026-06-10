@@ -2,6 +2,11 @@
 
 This repository contains the source code for the **Build Together** chapters of *The Complete Guide to Claude Code*. Each subfolder is a self-contained project built step-by-step alongside the reader in the book.
 
+> The book is now available, find it on Amazon!
+> https://www.amazon.com/dp/B0H4R3WGTH
+> I also put out a quick start guide:
+> https://www.amazon.com/dp/B0H47D1RC5
+
 ## Repository Structure
 
 ```

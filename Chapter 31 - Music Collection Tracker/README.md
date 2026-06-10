@@ -2,8 +2,9 @@
 
 Source code for the hands-on tutorial in **The Complete Guide to Claude Code**.
 
-> The book is not yet available. When it launches, find it on Amazon.
-> In the mean time, this is the "quick start" version:
+> The book is now available, find it on Amazon!
+> https://www.amazon.com/dp/B0H4R3WGTH
+> I also put out a quick start guide:
 > https://www.amazon.com/dp/B0H47D1RC5
 
 ---
