@@ -15,8 +15,16 @@ book source/
 ### [Chapter 31 - Music Collection Tracker](Chapter%2031%20-%20Music%20Collection%20Tracker/)
 The first Build Together project. A browser-based music collection manager where you catalog albums, track your listening history, and browse cover art — built from scratch with Claude Code guiding every step.
 
+| Light mode | Dark mode | Album detail |
+| --- | --- | --- |
+| ![Light mode](Chapter%2031%20-%20Music%20Collection%20Tracker/screenshots/lightMode.png) | ![Dark mode](Chapter%2031%20-%20Music%20Collection%20Tracker/screenshots/darkMode.png) | ![Album detail](Chapter%2031%20-%20Music%20Collection%20Tracker/screenshots/popupView.png) |
+
 ### [Chapter 32 - Meal Tracker](Chapter%2032%20-%20Meal%20Tracker/)
 The second Build Together project. A meal planning and tracking app that builds on the skills and patterns introduced in Chapter 31.
+
+| Home & chart | Add meal | History |
+| --- | --- | --- |
+| ![Home and calorie chart](Chapter%2032%20-%20Meal%20Tracker/screenshots/chart.png) | ![Add meal form](Chapter%2032%20-%20Meal%20Tracker/screenshots/addMeal.png) | ![History](Chapter%2032%20-%20Meal%20Tracker/screenshots/history.png) |
 
 ## Usage
 
