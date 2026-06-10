@@ -4,6 +4,7 @@ This repository contains the source code for the **Build Together** chapters of 
 
 > The book is now available, find it on Amazon!
 > https://www.amazon.com/dp/B0H4R3WGTH
+>
 > I also put out a quick start guide:
 > https://www.amazon.com/dp/B0H47D1RC5
 
