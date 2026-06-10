@@ -16,10 +16,15 @@ book source/
 └── Chapter 32 - Meal Tracker/               # Build Together, Part 2
 ```
 
+> **Note:** These projects are not meant to be "production ready" code. They exist
+> to get you familiar, comfortable, and up and running with Claude Code, a hands-on
+> starting point for getting a firm grasp on how to use it, not a reference for
+> production architecture.
+
 ## Projects
 
 ### [Chapter 31 - Music Collection Tracker](Chapter%2031%20-%20Music%20Collection%20Tracker/)
-The first Build Together project. A browser-based music collection manager where you catalog albums, track your listening history, and browse cover art — built from scratch with Claude Code guiding every step.
+The first Build Together project. A browser-based music collection manager where you catalog albums, track your listening history, and browse cover art - built from scratch with Claude Code guiding every step.
 
 | Light mode | Dark mode | Album detail |
 | --- | --- | --- |
