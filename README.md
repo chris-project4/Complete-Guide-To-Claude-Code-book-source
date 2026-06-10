@@ -28,4 +28,4 @@ The second Build Together project. A meal planning and tracking app that builds 
 
 ## Usage
 
-Each project folder is independent. Open a project folder in your editor, follow along with the corresponding chapter, and use the included `prompts.md` (where present) to reproduce the exact prompts used in the book.
+Each project folder is independent. Open a project folder in your editor, follow along with the corresponding chapter, and use the included `prompts.md` to reproduce the exact prompts used in the book.

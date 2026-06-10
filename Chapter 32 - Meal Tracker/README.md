@@ -8,6 +8,21 @@ Source code for the hands-on tutorial in **The Complete Guide to Claude Code**.
 
 ---
 
+> **Note on sandboxing (Windows users):** When building this project, the sandbox
+> command may throw an error about missing installs. By default, if the sandbox
+> cannot start because dependencies are missing or the platform is unsupported,
+> Claude Code shows a warning and runs commands without sandboxing. (To make this
+> a hard failure instead, set `sandbox.failIfUnavailable` to `true` — intended for
+> managed deployments that require sandboxing as a security gate.)
+>
+> On Linux and WSL2, the sandbox relies on two packages: **bubblewrap** (the
+> unprivileged sandboxing tool that enforces filesystem isolation) and **socat**
+> (the relay used to route network traffic through the sandbox proxy).
+>
+> See the official documentation for details: https://code.claude.com/docs/en/sandboxing
+
+---
+
 ## What this is
 
 A small full-stack TypeScript meal and calorie tracker built step-by-step using
